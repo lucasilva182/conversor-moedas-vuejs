@@ -1,8 +1,7 @@
 <template>
   <div class="conversor">
     <h2>{{moedaA}} para {{moedaB}}</h2>
-    <input class="valor" id="valor" type="text" maxlength="9" v-model="moedaA_value" v-bind:placeholder="moedaA"  v-on:keyup="mask">
-    <input class="btn" type="button" value="Converter" v-on:click="converter">
+    <input class="valor" id="valor" type="number" maxlength="9" v-model="moedaA_value" v-bind:placeholder="moedaA"   @keyup="converter(), mask()">
     <h2>{{simbolo}} {{moedaB_value}}</h2>
   </div>
 </template>
@@ -14,13 +13,13 @@ export default {
     data(){
       return{
         moedaA_value : "",
-        moedaB_value : 0,
+        moedaB_value : "0",
       }
     },
     methods:{
       converter(){
         let  de_para = this.moedaA + "_" + this.moedaB;
-        let url = "https://free.currconv.com/api/v7/convert?q="+de_para+"&compact=ultra&apiKey=3c14b1e552ce5f781131"
+        let url = "https://free.currconv.com/api/v7/convert?q="+de_para+"&compact=ultra&apiKey=be5135c35f347b9b59de"
 
         fetch(url)
           .then(res=>{
@@ -30,6 +29,7 @@ export default {
             let cotacao = json[de_para];
 
             this.moedaB_value = (cotacao * parseFloat(this.moedaA_value.replace(",", "."))).toFixed(2);
+            this.moedaB_value.toString;
             if(isNaN(this.moedaB_value)) {
               this.moedaB_value = '0'
             } 
@@ -81,6 +81,16 @@ export default {
   }
   .btn:hover{
     background: #6b849b;
+  }
+
+  input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    
+}
+  input[type=number] { 
+    -moz-appearance: textfield;
+    appearance: textfield;
+
   }
 
   @media (max-width: 900px){

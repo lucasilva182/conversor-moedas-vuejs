@@ -69,13 +69,15 @@ h2{
 .bloco {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
 
 }
 
 .linha{
+  width: 100%;
+  max-width: 700px;
+  margin: 30px auto;
   border-radius: 15px;
-  margin: 30px 100px;
   padding: 20px 0 80px 0;
   background: beige;
   box-shadow: 3px 3px 23px 0px  rgba(128,128,128,0.44);
