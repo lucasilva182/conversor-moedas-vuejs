@@ -18,15 +18,17 @@ export default {
     },
     methods:{
       converter(){
-        let  de_para = this.moedaA + "_" + this.moedaB;
-        let url = "https://free.currconv.com/api/v7/convert?q="+de_para+"&compact=ultra&apiKey=be5135c35f347b9b59de"
+        let  de_para = this.moedaA + "-" + this.moedaB;
+        // let  dePara = this.moedaA + this.moedaB;
+        let url = "https://economia.awesomeapi.com.br/json/"+de_para
 
         fetch(url)
           .then(res=>{
             return res.json();
           })
-          .then(json=>{
-            let cotacao = json[de_para];
+          .then(data=>{
+            let cotacao = data[0].bid
+            console.log(cotacao)
 
             this.moedaB_value = (cotacao * parseFloat(this.moedaA_value.replace(",", "."))).toFixed(2);
             this.moedaB_value.toString;
