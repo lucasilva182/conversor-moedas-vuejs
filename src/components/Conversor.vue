@@ -19,7 +19,7 @@ export default {
     methods:{
       converter(){
         let  de_para = this.moedaA + "_" + this.moedaB;
-        let url = "https://free.currconv.com/api/v7/convert?q="+de_para+"&compact=ultra&apiKey=be5135c35f347b9b59de"
+        let url = "https://free.currconv.com/api/v7/convert?q="+de_para+"&compact=ultra&apiKey=2512ed73d6c923e9ffc8"
 
         fetch(url)
           .then(res=>{
